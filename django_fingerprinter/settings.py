@@ -144,16 +144,16 @@ MFA_RECHECK_MIN=10         # Minimum interval in seconds
 MFA_RECHECK_MAX=30         # Maximum in seconds
 MFA_QUICKLOGIN=True        
 
-TOKEN_ISSUER_NAME="django_mfa2_example"      #TOTP Issuer name
+TOKEN_ISSUER_NAME="django_fingerprinter"      #TOTP Issuer name
 
 if DEBUG:
   U2F_APPID="https://localhost"    #URL For U2F
   FIDO_SERVER_ID=u"localhost"      # Server rp id for FIDO2, it the full domain of your project
 else:
-  U2F_APPID="https://django-mfa2-example.herokuapp.com"    #URL For U2F
-  FIDO_SERVER_ID=u"django-mfa2-example.herokuapp.com"      # Server rp id for FIDO2, it the full domain of your project
+  U2F_APPID="https://django_fingerprinter.herokuapp.com"    #URL For U2F
+  FIDO_SERVER_ID=u"django_fingerprinter.herokuapp.com"      # Server rp id for FIDO2, it the full domain of your project
 
-FIDO_SERVER_NAME=u"django_mfa2_example"
+FIDO_SERVER_NAME=u"django_fingerprinter"
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)

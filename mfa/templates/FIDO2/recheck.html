@@ -76,12 +76,12 @@
           if (res.status=="OK")
           {
               $("#msgdiv").addClass("alert alert-success").removeClass("alert-danger")
-             $("#msgdiv").html("Verified....please wait")
-          {%  if mode == "auth" %}
-          window.location.href=res.redirect;
-          {% elif mode == "recheck" %}
-              mfa_success_function();
-          {% endif %}
+              $("#msgdiv").html("Verified....please wait")
+            {%  if mode=="auth" %}
+            window.location.href=res.redirect;
+            {% elif mode == "recheck" %}
+                mfa_success_function();
+            {% endif %}
           }
           else {
               $("#msgdiv").addClass("alert alert-danger").removeClass("alert-success")

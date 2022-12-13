@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.utils import timezone
 from django.conf import settings
 from .models import User
 from . import utils
+
+def remove_user_and_redirect(request):
+    User.objects.filter(username=request.user.username).delete()
+    auth.logout(request)
+    messages.error(request, f'Your fingerprint capture was not valid. Kindly re-register and try again.')
+    return redirect(reverse('accounts:register'))
 
 def login_user_in(request, username):
     user=User.objects.get(username=username)
@@ -27,6 +33,8 @@ def login(request):
                     res =  has_mfa(request,username=username)
                     if res: return res
                     return login_user_in(request, username)
+                else:
+                    err="Unknown Device (Fingerprint failed)."
             else:
                 err="This student is NOT activated yet."
         else:
