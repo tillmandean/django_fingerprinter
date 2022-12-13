@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'django_fingerprinter.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'accounts_user',
         'USER': 'pmsddzuxawirhw',
         'PASSWORD': '5d73da6222bf1f8f99d887a22f8e23ba32440b078ac20210d790fbfe74dd53e2',
