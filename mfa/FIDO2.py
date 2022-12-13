@@ -63,11 +63,6 @@ def complete_reg(request):
         uk.save()
         return HttpResponse(simplejson.dumps({'status': 'OK'}))
     except Exception as exp:
-        try:
-            from raven.contrib.django.raven_compat.models import client
-            client.captureException()
-        except:
-            pass
         return HttpResponse(simplejson.dumps({'status': 'ERR', "message": "Error on server, please try again later"}))
 
 
@@ -122,11 +117,6 @@ def authenticate_complete(request):
                                                   "message": "Wrong challenge received, make sure that this is your security and try again."}),
                                 content_type = "application/json")
         except Exception as excep:
-            try:
-                from raven.contrib.django.raven_compat.models import client
-                client.captureException()
-            except:
-                pass
             return HttpResponse(simplejson.dumps({'status': "ERR",
                                                   "message": excep.message}),
                                 content_type = "application/json")
