@@ -1,1 +1,1 @@
-web: gunicorn django_mfa2_example.wsgi --log-file -
+web: gunicorn django_fingerprinter.wsgi --log-file -
